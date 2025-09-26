@@ -109,7 +109,7 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            background: linear-gradient(135deg, #2d1b69 0%, #11998e 50%, #38ef7d 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
             position: relative;
             overflow: hidden;
         }
@@ -132,12 +132,15 @@
         }
         
         .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 400px;
-            gap: 4rem;
+            display: flex;
+            flex-direction: column;
             align-items: center;
+            text-align: center;
+            gap: 3rem;
             position: relative;
             z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
         }
         
         .hero-text {
@@ -151,7 +154,10 @@
             color: white;
             margin-bottom: 1rem;
             line-height: 1.2;
-            min-height: 4.2rem;
+            min-height: 8.4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         
         .hero-text .tagline {
@@ -237,6 +243,8 @@
             align-items: center;
             width: 400px;
             height: 400px;
+            margin: 0 auto;
+            flex-shrink: 0;
         }
         
         .hero-image::before {
@@ -265,7 +273,6 @@
             position: relative;
             z-index: 2;
             backdrop-filter: blur(10px);
-            animation: pulse 3s ease-in-out infinite;
         }
         
         @keyframes pulse {
@@ -761,8 +768,40 @@
             background: var(--secondary-color);
         }
         
-        /* Responsive Design */
+        /* Tablet Responsive */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 3rem;
+            }
+            
+            .hero-text h1 {
+                font-size: 3rem;
+                min-height: 7rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+            
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* Mobile Responsive */
         @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
             .nav-links {
                 display: none;
             }
@@ -771,13 +810,54 @@
                 display: flex;
             }
             
+            .hero {
+                padding: 2rem 0;
+                min-height: auto;
+                background: linear-gradient(135deg, #a8edea 0%, #fed6e3 50%, #ffecd2 100%);
+            }
+            
             .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
+                gap: 2rem;
             }
             
             .hero-text h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
+                min-height: 5.5rem;
+                line-height: 1.3;
+                color: #2d3748;
+            }
+            
+            .hero-text .tagline {
+                font-size: 1.1rem;
+                color: #4a5568;
+            }
+            
+            .hero-text p {
+                font-size: 1rem;
+                color: #718096;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.8rem;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 250px;
+                justify-content: center;
+            }
+            
+            .btn-primary {
+                background: rgba(102, 126, 234, 0.9);
+                border: 2px solid rgba(102, 126, 234, 0.9);
+            }
+            
+            .btn-outline {
+                background: rgba(255, 255, 255, 0.8);
+                color: #4a5568;
+                border: 2px solid rgba(102, 126, 234, 0.5);
             }
             
             .about-content {
@@ -815,7 +895,7 @@
             }
             
             .timeline-item:nth-child(odd) .project-links,
-            .timeline-item:nth-child(even) .project-links {
+            .timeline-item:nth-child(even) .timeline-content {
                 justify-content: flex-start;
             }
             
@@ -823,23 +903,73 @@
                 grid-template-columns: 1fr;
             }
             
-            .hero-buttons {
-                justify-content: center;
-            }
-            
             .floating-shape {
                 display: none;
             }
             
             .hero-image {
-                width: 300px;
-                height: 300px;
+                width: 280px;
+                height: 280px;
                 margin: 0 auto;
             }
             
             .hero-image::before {
-                width: 280px;
-                height: 280px;
+                width: 260px;
+                height: 260px;
+                background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #a8edea);
+            }
+            
+            .hero-image img {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .section {
+                padding: 3rem 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .navbar {
+                padding: 0.8rem 0;
+            }
+        }
+        
+        /* Small Mobile */
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 1.8rem;
+                min-height: 4.5rem;
+            }
+            
+            .hero-image {
+                width: 220px;
+                height: 220px;
+            }
+            
+            .hero-image::before {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .hero-image img {
+                width: 190px;
+                height: 190px;
+            }
+            
+            .container {
+                padding: 0 0.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
             }
         }
         
@@ -860,7 +990,7 @@
             overflow: hidden;
             border-right: 2px solid rgba(255, 255, 255, 0.7);
             white-space: nowrap;
-            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+            width: 100%;
         }
         
         /* Lofi Effects */
@@ -1014,13 +1144,13 @@
             <div class="nav-container">
                 <div class="logo">Faiq Raihan</div>
                 <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#education">Education</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#about">Tentang</a></li>
+                    <li><a href="#skills">Keahlian</a></li>
+                    <li><a href="#experience">Pengalaman</a></li>
+                    <li><a href="#projects">Proyek</a></li>
+                    <li><a href="#education">Pendidikan</a></li>
+                    <li><a href="#contact">Kontak</a></li>
                 </ul>
                 <div class="mobile-menu">
                     <span></span>
@@ -1029,27 +1159,20 @@
                 </div>
             </div>
         </div>
-    </nav>
+    </nav><br><br><br>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content" data-aos="fade-up">
-                <div class="hero-text">
-                    <h1 class="typing">Muhammad Faiq Raihan Dhiya'ulhak</h1>
-                    <p class="tagline">Backend Developer | Laravel Specialist | Linux Enthusiast</p>
-                    <p>A dedicated and results-driven Informatics Engineering graduate with 3+ years of experience as Software Developer and Project Manager. Skilled in Laravel, system architecture, and project leadership.</p>
-                    <div class="hero-buttons">
-                        <a href="#contact" class="btn btn-primary">
-                            <i class="fas fa-envelope"></i> Contact Me
-                        </a>
-                        <a href="#" class="btn btn-outline">
-                            <i class="fas fa-download"></i> Download CV
-                        </a>
-                    </div>
-                </div>
                 <div class="hero-image">
                     <img src="img/hero/aku.png" alt="Muhammad Faiq Raihan Dhiya'ulhak">
+                </div>
+                <div class="hero-text">
+                    <h1 class="typing">Muhammad Faiq Raihan Dhiya'ulhak</h1>
+                    <p class="tagline">Backend Developer & Project Manager | Spesialis Laravel | Penggemar Linux</p>
+                    <p>Seorang Backend Developer dan Project Manager berpengalaman dengan 3+ tahun mengelola tim dan mengembangkan sistem backend yang robust. Ahli dalam Laravel, arsitektur sistem, dan memimpin proyek teknologi dari konsep hingga implementasi.</p>
+                    
                 </div>
             </div>
         </div>
@@ -1059,17 +1182,17 @@
     <section id="about" class="section">
         <div class="container">
             <div class="section-title" data-aos="fade-up">
-                <h2>About Me</h2>
-                <p>Get to know more about my background and expertise</p>
+                <h2>Tentang Saya</h2>
+                <p>Kenali lebih lanjut tentang latar belakang dan keahlian saya</p>
             </div>
             <div class="about-content" data-aos="fade-up" data-aos-delay="200">
                 <div class="about-image">
                     <img src="img/about/aku.png" alt="About Faiq Raihan">
                 </div>
                 <div class="about-text">
-                    <h3>Building Solutions, Creating Impact</h3>
-                    <p>I am a technology project leader with a track record of more than 3 years in managing system development and teams. With a strong background in Informatics Engineering, I have the unique ability to translate complex business needs into functional, efficient, and impactful digital solutions.</p>
-                    <p>I am passionate about leading projects from the idea stage, architecture design, to successful product launch. My experience includes developing AI-powered systems, secure voting platforms, and comprehensive business management solutions.</p>
+                    <h3>Backend Developer & Project Manager Berpengalaman</h3>
+                    <p>Sebagai Backend Developer dan Project Manager dengan pengalaman 3+ tahun, saya menggabungkan keahlian teknis dalam pengembangan sistem backend dengan kemampuan manajerial untuk memimpin tim dan proyek. Spesialisasi saya dalam Laravel dan arsitektur sistem memungkinkan saya merancang solusi backend yang scalable dan robust.</p>
+                    <p>Saya berpengalaman mengelola siklus hidup proyek lengkap, mulai dari analisis kebutuhan, desain arsitektur backend, koordinasi tim developer, hingga deployment dan maintenance. Portfolio saya mencakup sistem AI, platform voting aman, dan aplikasi manajemen bisnis dengan arsitektur backend yang kompleks.</p>
                     <div class="about-info">
                         <div class="info-item">
                             <i class="fas fa-map-marker-alt"></i>
@@ -1081,11 +1204,11 @@
                         </div>
                         <div class="info-item">
                             <i class="fas fa-briefcase"></i>
-                            <span>3+ Years Experience</span>
+                            <span>Pengalaman 3+ Tahun</span>
                         </div>
                         <div class="info-item">
                             <i class="fas fa-certificate"></i>
-                            <span>BNSP Certified</span>
+                            <span>Bersertifikat BNSP</span>
                         </div>
                     </div>
                 </div>
@@ -1097,12 +1220,12 @@
     <section id="skills" class="section" style="background: var(--bg-light);">
         <div class="container">
             <div class="section-title" data-aos="fade-up">
-                <h2>Skills & Technologies</h2>
-                <p>Technologies and tools I work with</p>
+                <h2>Keahlian & Teknologi</h2>
+                <p>Teknologi dan alat yang saya gunakan</p>
             </div>
             <div class="skills-grid" data-aos="fade-up" data-aos-delay="200">
                 <div class="skill-category">
-                    <h3><i class="fas fa-code"></i> Languages</h3>
+                    <h3><i class="fas fa-code"></i> Bahasa Pemrograman</h3>
                     <div class="skill-list">
                         <span class="skill-item">PHP</span>
                         <span class="skill-item">JavaScript</span>
@@ -1112,7 +1235,7 @@
                     </div>
                 </div>
                 <div class="skill-category">
-                    <h3><i class="fas fa-layer-group"></i> Frameworks</h3>
+                    <h3><i class="fas fa-layer-group"></i> Framework</h3>
                     <div class="skill-list">
                         <span class="skill-item">Laravel</span>
                         <span class="skill-item">Filament</span>
@@ -1122,7 +1245,7 @@
                     </div>
                 </div>
                 <div class="skill-category">
-                    <h3><i class="fas fa-tools"></i> Others</h3>
+                    <h3><i class="fas fa-tools"></i> Lainnya</h3>
                     <div class="skill-list">
                         <span class="skill-item">Database Design</span>
                         <span class="skill-item">System Architecture</span>
@@ -1138,16 +1261,25 @@
     <section id="experience" class="section">
         <div class="container">
             <div class="section-title" data-aos="fade-up">
-                <h2>Work Experience</h2>
-                <p>My professional journey and key projects</p>
+                <h2>Pengalaman Kerja</h2>
+                <p>Perjalanan profesional dan proyek-proyek utama saya</p>
             </div>
             <div class="experience-timeline" data-aos="fade-up" data-aos-delay="200">
+                <div class="timeline-item">
+                    <div class="timeline-date">Juli 2025 - Present</div>
+                    <div class="timeline-content">
+                        <h3>PT Sat Set Indonesia</h3>
+                        <h4>IT Backend Developer</h4>
+                        <p>Bertanggung jawab mengurusi semua aplikasi yang ada di perusahaan, melakukan maintenance, pengembangan fitur baru, dan optimasi sistem backend untuk mendukung operasional bisnis.</p>
+                    </div>
+                </div>
+                
                 <div class="timeline-item">
                     <div class="timeline-date">2024 - 2025</div>
                     <div class="timeline-content">
                         <h3>Mekanikace Team</h3>
                         <h4>Project Manager & Backend Developer</h4>
-                        <p>Leading development of innovative solutions including AI-powered systems and secure platforms.</p>
+                        <p>Memimpin pengembangan solusi inovatif termasuk sistem bertenaga AI dan platform yang aman.</p>
                         <div class="project-links">
                             <a href="https://majt.or.id" class="project-link">AIssya</a>
                             <a href="https://pemira-polines.mekanikace.cloud" class="project-link">Pemira Polines</a>
@@ -1161,7 +1293,7 @@
                     <div class="timeline-content">
                         <h3>Crystal Clean</h3>
                         <h4>Fullstack Developer</h4>
-                        <p>Developed comprehensive business management systems including laundry management, payroll, and POS systems.</p>
+                        <p>Mengembangkan sistem manajemen bisnis yang komprehensif termasuk manajemen laundry, payroll, dan sistem POS.</p>
                         <div class="project-links">
                             <a href="#" class="project-link">Delta Mas Laundry</a>
                             <a href="#" class="project-link">Payroll App</a>
@@ -1175,7 +1307,7 @@
                     <div class="timeline-content">
                         <h3>Masjid Agung Jawa Tengah</h3>
                         <h4>Fullstack Developer</h4>
-                        <p>Developed computer vision system for prayer row detection using advanced AI technologies.</p>
+                        <p>Mengembangkan sistem computer vision untuk deteksi barisan sholat menggunakan teknologi AI canggih.</p>
                         <div class="project-links">
                             <a href="https://github.com/raihanfaiq72/comvis" class="project-link">Shaf Detection System</a>
                         </div>
@@ -1187,7 +1319,7 @@
                     <div class="timeline-content">
                         <h3>Ditreskrimsus Polda Jateng</h3>
                         <h4>Fullstack Developer</h4>
-                        <p>Created professional company profile website for law enforcement agency.</p>
+                        <p>Membuat website profil perusahaan profesional untuk lembaga penegak hukum.</p>
                         <div class="project-links">
                             <a href="https://reskrimsus.semarangkota.go.id/" class="project-link">Company Profile</a>
                         </div>
@@ -1199,7 +1331,7 @@
                     <div class="timeline-content">
                         <h3>Universitas Diponegoro</h3>
                         <h4>Fullstack Developer</h4>
-                        <p>Developed innovative maggot cultivation management system for sustainable agriculture.</p>
+                        <p>Mengembangkan sistem manajemen budidaya maggot yang inovatif untuk pertanian berkelanjutan.</p>
                         <div class="project-links">
                             <a href="https://github.com/raihanfaiq72/maggot-undip" class="project-link">Maggot System</a>
                         </div>
@@ -1211,7 +1343,7 @@
                     <div class="timeline-content">
                         <h3>Universitas Dian Nuswantoro</h3>
                         <h4>Fullstack Developer</h4>
-                        <p>Built community and e-commerce platforms for art community and organic products.</p>
+                        <p>Membangun platform komunitas dan e-commerce untuk komunitas seni dan produk organik.</p>
                         <div class="project-links">
                             <a href="https://kelompok5rupa.com" class="project-link">Kelompok Lima Rupa</a>
                             <a href="https://produkorganik.id" class="project-link">Produk Organik</a>
@@ -1226,8 +1358,8 @@
     <section id="projects" class="section" style="background: var(--bg-light);">
         <div class="container">
             <div class="section-title" data-aos="fade-up">
-                <h2>Featured Projects</h2>
-                <p>Showcase of my recent work and achievements</p>
+                <h2>Proyek Unggulan</h2>
+                <p>Showcase karya terbaru dan pencapaian saya</p>
             </div>
             <div class="projects-grid" data-aos="fade-up" data-aos-delay="200">
                 <div class="project-card">
@@ -1236,7 +1368,7 @@
                     </div>
                     <div class="project-content">
                         <h3>AIssya - AI Visitor Assistant</h3>
-                        <p>AI-powered visitor assistant system for Masjid Agung Jawa Tengah with natural language processing capabilities.</p>
+                        <p>Sistem asisten pengunjung bertenaga AI untuk Masjid Agung Jawa Tengah dengan kemampuan pemrosesan bahasa alami.</p>
                         <div class="project-links">
                             <a href="https://majt.or.id"><i class="fas fa-external-link-alt"></i> Live Demo</a>
                         </div>
@@ -1248,8 +1380,8 @@
                         <i class="fas fa-vote-yea"></i>
                     </div>
                     <div class="project-content">
-                        <h3>Secure Voting System</h3>
-                        <p>Secure online voting platform for Pemira Polines with advanced security features and real-time results.</p>
+                        <h3>Sistem Voting Aman</h3>
+                        <p>Platform voting online yang aman untuk Pemira Polines dengan fitur keamanan canggih dan hasil real-time.</p>
                         <div class="project-links">
                             <a href="https://pemira-polines.mekanikace.cloud"><i class="fas fa-external-link-alt"></i> Live Demo</a>
                         </div>
@@ -1261,8 +1393,8 @@
                         <i class="fas fa-eye"></i>
                     </div>
                     <div class="project-content">
-                        <h3>Shaf Detection System</h3>
-                        <p>Computer vision system for detecting prayer rows using machine learning and image processing.</p>
+                        <h3>Sistem Deteksi Shaf</h3>
+                        <p>Sistem computer vision untuk mendeteksi barisan sholat menggunakan machine learning dan pemrosesan gambar.</p>
                         <div class="project-links">
                             <a href="https://github.com/raihanfaiq72/comvis"><i class="fab fa-github"></i> GitHub</a>
                         </div>
@@ -1274,8 +1406,8 @@
                         <i class="fas fa-building"></i>
                     </div>
                     <div class="project-content">
-                        <h3>Company Profile - Ditreskrimsus</h3>
-                        <p>Professional website for law enforcement agency with modern design and content management system.</p>
+                        <h3>Profil Perusahaan - Ditreskrimsus</h3>
+                        <p>Website profesional untuk lembaga penegak hukum dengan desain modern dan sistem manajemen konten.</p>
                         <div class="project-links">
                             <a href="https://reskrimsus.semarangkota.go.id/"><i class="fas fa-external-link-alt"></i> Live Demo</a>
                         </div>
@@ -1287,8 +1419,8 @@
                         <i class="fas fa-seedling"></i>
                     </div>
                     <div class="project-content">
-                        <h3>Maggot Cultivation System</h3>
-                        <p>Management system for sustainable maggot cultivation with monitoring and analytics features.</p>
+                        <h3>Sistem Budidaya Maggot</h3>
+                        <p>Sistem manajemen untuk budidaya maggot berkelanjutan dengan fitur monitoring dan analitik.</p>
                         <div class="project-links">
                             <a href="https://github.com/raihanfaiq72/maggot-undip"><i class="fab fa-github"></i> GitHub</a>
                         </div>
@@ -1300,8 +1432,8 @@
                         <i class="fas fa-palette"></i>
                     </div>
                     <div class="project-content">
-                        <h3>Art Community Platform</h3>
-                        <p>Community platform for artists to showcase their work and connect with other creatives.</p>
+                        <h3>Platform Komunitas Seni</h3>
+                        <p>Platform komunitas untuk seniman memamerkan karya mereka dan terhubung dengan kreator lainnya.</p>
                         <div class="project-links">
                             <a href="https://kelompok5rupa.com"><i class="fas fa-external-link-alt"></i> Live Demo</a>
                         </div>
@@ -1315,8 +1447,8 @@
     <section id="education" class="section">
         <div class="container">
             <div class="section-title" data-aos="fade-up">
-                <h2>Education & Achievements</h2>
-                <p>My academic background and professional certifications</p>
+                <h2>Pendidikan & Pencapaian</h2>
+                <p>Latar belakang akademis dan sertifikasi profesional saya</p>
             </div>
             
             <!-- Education -->
@@ -1328,14 +1460,14 @@
                 </div>
                 <div class="info-card">
                     <i class="fas fa-school"></i>
-                    <h3>High School</h3>
-                    <p>SMA Assalaam<br>Graduated: 2021</p>
+                    <h3>Sekolah Menengah Atas</h3>
+                    <p>SMA Assalaam<br>Lulus: 2021</p>
                 </div>
             </div>
             
             <!-- Organizations -->
             <div class="section-title" data-aos="fade-up" style="margin-top: 4rem;">
-                <h2>Organizations</h2>
+                <h2>Organisasi</h2>
             </div>
             <div class="info-grid" data-aos="fade-up" data-aos-delay="200">
                 <div class="info-card">
@@ -1352,7 +1484,7 @@
             
             <!-- Certifications -->
             <div class="section-title" data-aos="fade-up" style="margin-top: 4rem;">
-                <h2>Certifications</h2>
+                <h2>Sertifikasi</h2>
             </div>
             <div class="info-grid" data-aos="fade-up" data-aos-delay="200">
                 <div class="info-card">
@@ -1368,59 +1500,71 @@
     <section id="contact" class="section contact">
         <div class="container">
             <div class="section-title" data-aos="fade-up">
-                <h2>Get In Touch</h2>
-                <p>Let's discuss your next project</p>
+                <h2>Hubungi Saya</h2>
+                <p>Siap untuk memulai proyek backend atau butuh project manager berpengalaman? Mari berkolaborasi!</p>
             </div>
+            
+            <div class="contact-cta" data-aos="fade-up" data-aos-delay="100">
+                <div class="cta-content">
+                    <h3>💼 Tersedia untuk Proyek Backend & Manajemen</h3>
+                    <p>Saya siap membantu mengembangkan sistem backend yang robust atau memimpin tim development Anda menuju kesuksesan proyek.</p>
+                    <div class="cta-buttons">
+                        <a href="mailto:faiq.fhr03@gmail.com?subject=Diskusi Proyek Backend" class="btn btn-primary">
+                            <i class="fas fa-envelope"></i> Email Langsung
+                        </a>
+                        <a href="https://wa.me/6281999996737?text=Halo, saya tertarik untuk mendiskusikan proyek backend" class="btn btn-outline">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
             <div class="contact-content" data-aos="fade-up" data-aos-delay="200">
-                <div class="contact-info">
-                    <h3>Contact Information</h3>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <strong>Email</strong><br>
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p>Untuk diskusi detail proyek</p>
                             <a href="mailto:faiq.fhr03@gmail.com">faiq.fhr03@gmail.com</a>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <i class="fab fa-whatsapp"></i>
-                        <div>
-                            <strong>WhatsApp</strong><br>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>WhatsApp</h4>
+                            <p>Respon cepat untuk konsultasi</p>
                             <a href="https://wa.me/6281999996737">+62 819-9999-6737</a>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <i class="fab fa-linkedin"></i>
-                        <div>
-                            <strong>LinkedIn</strong><br>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>LinkedIn</h4>
+                            <p>Jaringan profesional</p>
                             <a href="#">linkedin.com/in/faiqraihan</a>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <i class="fab fa-github"></i>
-                        <div>
-                            <strong>GitHub</strong><br>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>GitHub</h4>
+                            <p>Portfolio kode & proyek</p>
                             <a href="https://github.com/raihanfaiq72">github.com/raihanfaiq72</a>
                         </div>
                     </div>
                 </div>
-                
-                <form class="contact-form">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-paper-plane"></i> Send Message
-                    </button>
-                </form>
             </div>
         </div>
     </section>
@@ -1434,7 +1578,7 @@
                 <a href="#"><i class="fab fa-linkedin"></i></a>
                 <a href="https://github.com/raihanfaiq72"><i class="fab fa-github"></i></a>
             </div>
-            <p>&copy; 2025 Muhammad Faiq Raihan Dhiya'ulhak. All rights reserved.</p>
+            <p>&copy; 2025 Muhammad Faiq Raihan Dhiya'ulhak. Semua hak dilindungi.</p>
         </div>
     </footer>
 
@@ -1474,29 +1618,7 @@
             }
         });
         
-        // Contact form submission
-        document.querySelector('.contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const message = formData.get('message');
-            
-            // Create WhatsApp message
-            const whatsappMessage = `Hello! My name is ${name}.\n\nEmail: ${email}\n\nMessage: ${message}`;
-            const whatsappURL = `https://wa.me/6281999996737?text=${encodeURIComponent(whatsappMessage)}`;
-            
-            // Open WhatsApp
-            window.open(whatsappURL, '_blank');
-            
-            // Reset form
-            this.reset();
-            
-            // Show success message
-            alert('Thank you for your message! You will be redirected to WhatsApp.');
-        });
+        // Contact form removed - no longer needed
         
         // Mobile menu toggle
         document.querySelector('.mobile-menu').addEventListener('click', function() {
@@ -1621,7 +1743,7 @@
         window.addEventListener('load', function() {
             const heroTitle = document.querySelector('.hero-text h1');
             if (heroTitle) {
-                typeWriter(heroTitle, 'Muhammad Faiq Raihan Dhiya\'ulhak', 80);
+                typeWriter(heroTitle, 'Muhammad Faiq Raihan Dhiya\'ulhak', 60);
             }
         });
     </script>

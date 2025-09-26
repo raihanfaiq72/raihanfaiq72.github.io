@@ -2359,6 +2359,137 @@ h6 { font-size: 16px; }
 	.trito_tm_modalbox .close a{width: 30px;height: 30px;}
 	.trito_tm_modalbox .news_popup_informations .title h3{font-size: 22px;}
 }
+
+/* Contact CTA Section */
+.contact-cta {
+    background: linear-gradient(135deg, var(--main-color), #6c7aa0);
+    border-radius: 20px;
+    padding: 40px;
+    margin-bottom: 60px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(80, 90, 126, 0.2);
+}
+
+.contact-cta .cta-content h3 {
+    color: #fff;
+    font-size: 28px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.contact-cta .cta-content p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 18px;
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cta-buttons .btn {
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+}
+
+.cta-buttons .btn-primary {
+    background: #fff;
+    color: var(--main-color);
+    border: 2px solid #fff;
+}
+
+.cta-buttons .btn-primary:hover {
+    background: transparent;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+}
+
+.cta-buttons .btn-outline {
+    background: transparent;
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.cta-buttons .btn-outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #fff;
+    transform: translateY(-2px);
+}
+
+/* Contact Grid */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.contact-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.contact-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--main-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 24px;
+    color: #fff;
+}
+
+.contact-details h4 {
+    color: #fff;
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.contact-details p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.contact-details a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.contact-details a:hover {
+    color: var(--main-color);
+}
+
 @media (max-width: 768px) {
 	.trito_tm_features ul{margin: 0px;}
 	.trito_tm_features ul li{width: 100%;padding-left: 0px;}
@@ -2371,4 +2502,37 @@ h6 { font-size: 16px; }
 	.trito_tm_news .news_list ul li{width: 100%;padding-left: 0px;}
 	.trito_tm_news .details .title h3{font-size: 20px;}
 	.trito_tm_news .news_list ul li .image{margin-bottom: 20px;}
+	
+	/* Contact CTA Mobile */
+	.contact-cta {
+		padding: 30px 20px;
+	}
+	
+	.contact-cta .cta-content h3 {
+		font-size: 24px;
+	}
+	
+	.contact-cta .cta-content p {
+		font-size: 16px;
+	}
+	
+	.cta-buttons {
+		flex-direction: column;
+		align-items: center;
+	}
+	
+	.cta-buttons .btn {
+		width: 100%;
+		max-width: 280px;
+		justify-content: center;
+	}
+	
+	.contact-grid {
+		grid-template-columns: 1fr;
+		gap: 20px;
+	}
+	
+	.contact-card {
+		padding: 25px 20px;
+	}
 }
