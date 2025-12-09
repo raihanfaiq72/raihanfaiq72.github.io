@@ -4,6 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Muhammad Faiq Raihan - Senior Backend Engineer & Linux Architect. Spesialis High-Scalability Systems, Microservices (Laravel/Go), DevOps (Docker/K8s), dan Cyber Security.">
+    <meta name="keywords"
+        content="Backend Engineer, Faiq Raihan, Linux Expert, Laravel Specialist, Golang Developer, DevOps Engineer, Kubernetes, System Architecture, DRY, SOLID, Clean Code, Arch Linux">
+    <meta name="author" content="Muhammad Faiq Raihan">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Muhammad Faiq Raihan | Backend & Linux Architect">
+    <meta property="og:description" content="Architecting scalable backend systems with Clean Code principles.">
+    <meta property="og:type" content="website">
     <title>ROOT@FAIQ:~$ sudo execute_full_portfolio</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,480 +24,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    <style>
-        /* --- CORE VARIABLES --- */
-        :root {
-            --bg-body: #000000;
-            --bg-card: #050505;
-            --text-main: #eeeeee;
-            --text-dim: #666666;
-            --border: #333333;
-            --font-mono: 'JetBrains Mono', monospace;
-            --font-sans: 'Inter', sans-serif;
-            --terminal-green: #00ff41;
-            --terminal-red: #ff0033;
-        }
-
-        /* --- GLOBAL RESET & CUSTOM CURSOR --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            outline: none;
-            /* CURSOR JARI TENGAH PUTIH */
-            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24' style='fill:white; stroke:black; stroke-width:1px;'><path d='M10.5 2a1.5 1.5 0 0 1 3 0v6h.5a1.5 1.5 0 0 1 0 3h-4a1.5 1.5 0 0 1 0-3h.5V2zm-2 9a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-1v1h-4v-1h-1z'/></svg>") 16 0, auto;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        ::selection {
-            background: var(--terminal-red);
-            color: #fff;
-        }
-
-        body {
-            background-color: var(--bg-body);
-            color: var(--text-main);
-            font-family: var(--font-sans);
-            line-height: 1.6;
-            overflow-x: hidden;
-            overflow-y: hidden; /* Locked until gate opens */
-        }
-
-        body.access-granted {
-            overflow-y: auto;
-        }
-
-        /* --- MATRIX BACKGROUND --- */
-        canvas#matrix {
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: -1;
-            opacity: 0.15;
-        }
-
-        /* --- THE GATE (AUDIO ENFORCER) --- */
-        #gate-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: #000;
-            z-index: 10000;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
-        }
-
-        .gate-content {
-            max-width: 600px;
-            width: 100%;
-            border: 2px solid var(--terminal-red);
-            background: #020202;
-            padding: 40px;
-            text-align: center;
-            position: relative;
-            box-shadow: 0 0 30px rgba(255, 0, 51, 0.3);
-        }
-
-        .gate-warning {
-            color: var(--terminal-red);
-            font-family: var(--font-mono);
-            font-size: 3rem;
-            font-weight: 900;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            animation: shake 0.5s infinite;
-        }
-
-        .gate-sub {
-            font-family: var(--font-mono);
-            color: #fff;
-            margin-bottom: 2rem;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-        }
-
-        /* Audio Visualizer Simulation */
-        .visualizer {
-            display: flex;
-            justify-content: center;
-            gap: 5px;
-            height: 50px;
-            margin-bottom: 2rem;
-            align-items: flex-end;
-        }
-
-        .bar {
-            width: 8px;
-            background: var(--terminal-green);
-            animation: equalize 1s infinite;
-        }
-
-        .bar:nth-child(even) { animation-duration: 0.8s; background: var(--terminal-red); }
-        .bar:nth-child(3n) { animation-duration: 1.2s; }
-
-        .enter-btn {
-            background: var(--terminal-red);
-            color: #000;
-            border: none;
-            padding: 20px 50px;
-            font-family: var(--font-mono);
-            font-weight: 900;
-            font-size: 1.5rem;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: 0.2s;
-            clip-path: polygon(10% 0, 100% 0, 100% 80%, 90% 100%, 0 100%, 0 20%);
-        }
-
-        .enter-btn:hover {
-            background: #fff;
-            box-shadow: 0 0 30px #fff;
-            transform: scale(1.05);
-        }
-
-        .enter-btn:active {
-            transform: scale(0.95);
-        }
-
-        /* --- MARQUEE (RUNNING TEXT) --- */
-        .marquee-container {
-            position: fixed;
-            bottom: 20px;
-            left: -5%;
-            width: 110%;
-            background: var(--terminal-green);
-            color: #000;
-            padding: 8px 0;
-            z-index: 999;
-            border-top: 3px solid #000;
-            border-bottom: 3px solid #000;
-            font-family: var(--font-mono);
-            font-weight: 900;
-            font-size: 1.2rem;
-            transform: rotate(-2deg);
-            box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
-            overflow: hidden;
-            pointer-events: none;
-        }
-
-        .marquee-wrapper {
-            display: flex;
-            width: fit-content;
-            animation: marquee 15s linear infinite;
-        }
-
-        .marquee-content {
-            display: flex;
-            white-space: nowrap;
-            padding-right: 50px;
-        }
-
-        .marquee-content span {
-            margin: 0 20px;
-        }
-
-        /* --- PRELOADER & EFFECTS --- */
-        #preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #000;
-            z-index: 9998;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.5s;
-        }
-        
-        #preloader.active {
-            opacity: 1;
-            pointer-events: all;
-        }
-
-        .linux-penguin {
-            font-size: 6rem;
-            color: #fff;
-            margin-bottom: 1.5rem;
-            animation: bounce 0.6s infinite alternate;
-            filter: drop-shadow(0 0 10px white);
-        }
-
-        .scanlines {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            background-size: 100% 2px, 3px 100%;
-            pointer-events: none;
-            z-index: 9000;
-        }
-
-        /* --- LAYOUT & SECTIONS --- */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            border-bottom: 1px solid var(--border);
-            z-index: 900;
-            padding: 1rem 0;
-        }
-        .nav-inner {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo { font-family: var(--font-mono); font-weight: 800; font-size: 1.2rem; color: var(--terminal-green); }
-        .nav-links { display: flex; gap: 1rem; }
-        .nav-item {
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            color: #888;
-            text-decoration: none;
-            padding: 5px 10px;
-            transition: 0.2s;
-        }
-        .nav-item:hover { color: var(--terminal-green); text-shadow: 0 0 5px var(--terminal-green); }
-
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
-        
-        .section { padding: 8rem 0; border-bottom: 1px dashed #222; }
-        .section-title { font-size: 3rem; font-weight: 900; text-transform: uppercase; line-height: 1; margin-bottom: 1rem; color: #fff; }
-        .section-tag { font-family: var(--font-mono); color: var(--terminal-red); display: block; margin-bottom: 0.5rem; }
-
-        /* HERO */
-        .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 80px; }
-        .hero-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 4rem; align-items: center; }
-        
-        .glitch-text {
-            font-size: 4.5rem;
-            font-weight: 900;
-            line-height: 0.9;
-            color: #fff;
-            position: relative;
-            margin-bottom: 1rem;
-        }
-        
-        .glitch-text::before, .glitch-text::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #000;
-        }
-        .glitch-text::before {
-            left: 2px;
-            text-shadow: -1px 0 var(--terminal-red);
-            clip: rect(24px, 550px, 90px, 0);
-            animation: glitch-anim-2 3s infinite linear alternate-reverse;
-        }
-        .glitch-text::after {
-            left: -2px;
-            text-shadow: -1px 0 var(--terminal-green);
-            clip: rect(85px, 550px, 140px, 0);
-            animation: glitch-anim 2.5s infinite linear alternate-reverse;
-        }
-
-        .sticker-badge {
-            background: #222; color: #fff; padding: 5px 10px; 
-            font-family: var(--font-mono); font-size: 0.8rem; 
-            border: 1px solid var(--terminal-green); margin-right: 5px; margin-bottom: 5px; display: inline-block;
-        }
-
-        .hero-img-box {
-            border: 2px solid var(--terminal-green);
-            padding: 10px;
-            background: #000;
-            position: relative;
-        }
-        .hero-img-box img { width: 100%; filter: grayscale(100%) contrast(1.5); }
-        .hero-img-box::after {
-            content: "SYSTEM_OVERLORD";
-            position: absolute;
-            bottom: -15px;
-            right: -15px;
-            background: var(--terminal-red);
-            color: #000;
-            font-family: var(--font-mono);
-            font-weight: bold;
-            padding: 5px 10px;
-        }
-
-        /* PHILOSOPHY */
-        .phil-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-        .phil-card {
-            background: #0a0a0a;
-            border: 1px solid #333;
-            padding: 2rem;
-            transition: 0.3s;
-        }
-        .phil-card:hover {
-            border-color: var(--terminal-green);
-            transform: translateY(-5px);
-            background: #111;
-        }
-        .phil-title {
-            font-family: var(--font-mono);
-            font-size: 1.5rem;
-            color: #fff;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-        }
-
-        /* TERMINAL & PLAYGROUND */
-        .terminal-box {
-            background: rgba(10, 10, 10, 0.9);
-            border: 1px solid #333;
-            padding: 1.5rem;
-            font-family: var(--font-mono);
-            height: 100%;
-            box-shadow: 0 0 20px rgba(0,0,0,0.8);
-        }
-        
-        .playground-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
-
-        .contrib-box {
-            width: 100%; aspect-ratio: 1; background: #111; 
-            transition: 0.1s; border: 1px solid #222;
-        }
-        .contrib-box:hover { background: var(--terminal-green) !important; transform: scale(1.5); z-index: 10; box-shadow: 0 0 10px var(--terminal-green); }
-        .lvl-1 { background: #0e4429; }
-        .lvl-2 { background: #006d32; }
-        .lvl-3 { background: #26a641; }
-        .lvl-4 { background: #39d353; }
-
-        /* TECH STACK CARDS */
-        .tech-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-        .tech-card {
-            border: 1px solid #333;
-            padding: 1.5rem;
-            background: #0a0a0a;
-            transition: 0.2s;
-        }
-        .tech-card:hover {
-            border-color: var(--terminal-green);
-            background: #111;
-        }
-        .tag-cloud {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 1rem;
-        }
-        .tag {
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            padding: 4px 8px;
-            background: #222;
-            color: #ccc;
-            border: 1px solid #444;
-        }
-
-        /* PROJECTS */
-        .project-row {
-            display: grid; grid-template-columns: 1fr 1.5fr; gap: 2rem;
-            margin-bottom: 4rem; border: 1px solid #333; background: #050505;
-        }
-        .project-visual {
-            background: #111; display: flex; align-items: center; justify-content: center;
-            border-right: 1px solid #333; min-height: 250px; position: relative; overflow: hidden;
-        }
-        .project-visual i { font-size: 5rem; color: #333; transition: 0.3s; }
-        .project-row:hover .project-visual i { color: var(--terminal-green); transform: scale(1.2) rotate(-10deg); text-shadow: 0 0 20px var(--terminal-green); }
-        .project-file-name {
-            position: absolute; bottom: 10px; right: 10px;
-            font-family: var(--font-mono); font-size: 0.7rem;
-            background: #000; padding: 2px 5px; color: var(--terminal-green);
-        }
-        
-        .project-content { padding: 2rem; display: flex; flex-direction: column; justify-content: center; }
-        .project-meta { font-family: var(--font-mono); color: var(--terminal-green); font-size: 0.8rem; margin-bottom: 0.5rem; }
-
-        /* EXPERIENCE LOGS */
-        .log-entry {
-            margin-bottom: 3rem;
-            padding-left: 20px;
-            border-left: 1px dashed #444;
-            position: relative;
-        }
-        .log-entry::before {
-            content: '';
-            position: absolute;
-            left: -6px;
-            top: 0;
-            width: 12px;
-            height: 12px;
-            background: #000;
-            border: 2px solid var(--terminal-green);
-            border-radius: 50%;
-        }
-        .log-role { color: #fff; font-weight: bold; font-family: var(--font-mono); font-size: 1.1rem; }
-        .log-company { color: #666; margin-bottom: 0.5rem; font-family: var(--font-mono); font-size: 0.9rem; }
-        .log-desc { color: #aaa; font-size: 0.95rem; border-left: 2px solid #333; padding-left: 1rem; }
-
-        /* TERMINAL CTA */
-        .terminal-cta-container {
-            border: 2px solid var(--terminal-green);
-            background: #000;
-            font-family: var(--font-mono);
-            max-width: 800px; margin: 0 auto;
-            box-shadow: 0 0 30px rgba(0, 255, 65, 0.1);
-        }
-        .terminal-body { height: 300px; padding: 20px; overflow-y: auto; color: #ccc; font-size: 0.9rem; }
-        .terminal-input-area { padding: 15px; border-top: 1px solid #333; background: #050505; }
-        #cmd-input { background: transparent; border: none; color: var(--terminal-green); width: 100%; font-family: var(--font-mono); font-size: 1rem; }
-        
-        /* ANIMATIONS */
-        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        @keyframes equalize { 0% { height: 5px; } 50% { height: 40px; } 100% { height: 5px; } }
-        @keyframes bounce { from { transform: translateY(0); } to { transform: translateY(-10px); } }
-        @keyframes shake { 0% { transform: translate(1px, 1px) rotate(0deg); } 10% { transform: translate(-1px, -2px) rotate(-1deg); } 20% { transform: translate(-3px, 0px) rotate(1deg); } 30% { transform: translate(3px, 2px) rotate(0deg); } 40% { transform: translate(1px, -1px) rotate(1deg); } 50% { transform: translate(-1px, 2px) rotate(-1deg); } 60% { transform: translate(-3px, 1px) rotate(0deg); } 70% { transform: translate(3px, 1px) rotate(-1deg); } 80% { transform: translate(-1px, -1px) rotate(1deg); } 90% { transform: translate(1px, 2px) rotate(0deg); } 100% { transform: translate(1px, -2px) rotate(-1deg); } }
-        @keyframes glitch-anim { 0% { clip: rect(30px, 9999px, 10px, 0); } 100% { clip: rect(10px, 9999px, 80px, 0); } }
-        @keyframes glitch-anim-2 { 0% { clip: rect(10px, 9999px, 90px, 0); } 100% { clip: rect(80px, 9999px, 10px, 0); } }
-
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .hero-grid, .playground-grid, .project-row { grid-template-columns: 1fr; }
-            .glitch-text { font-size: 2.5rem; }
-            .nav-links { display: none; }
-            .project-visual { border-right: none; border-bottom: 1px solid #333; }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <audio id="bg-music" loop>
-        <source src="music/music_chaos.mp3" type="audio/mp3">
+        <source src="music/music.mp3" type="audio/mp3">
     </audio>
 
     <canvas id="matrix"></canvas>
@@ -496,17 +38,25 @@
     <div id="gate-overlay">
         <div class="gate-content">
             <div class="gate-warning">ACCESS RESTRICTED</div>
-            <p class="gate-sub">SYSTEM REQUIRES AUDIO AUTHORIZATION TO PROCEED.</p>
-            
+            <p class="gate-sub">SYSTEM <strong><u>REQUIRES AUDIO</u></strong> AUTHORIZATION TO PROCEED.</p>
+
             <div class="visualizer">
-                <div class="bar"></div><div class="bar"></div><div class="bar"></div>
-                <div class="bar"></div><div class="bar"></div><div class="bar"></div>
-                <div class="bar"></div><div class="bar"></div><div class="bar"></div>
-                <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
             </div>
 
-            <button class="enter-btn" onclick="attemptEntry()">[ INJECT AUDIO & ENTER ]</button>
-            
+            <button class="enter-btn" onclick="attemptEntry()">[ PRESS HERE TO ENTER ]</button>
+
             <p style="color: #444; margin-top: 20px; font-family: var(--font-mono); font-size: 0.7rem;">
                 CAUTION: HIGH VOLUME BACKEND CHAOS
             </p>
@@ -519,12 +69,14 @@
             > COMPILING KERNEL...
         </div>
         <div style="width: 300px; height: 4px; background: #333;">
-            <div id="loader-bar" style="width: 0%; height: 100%; background: var(--terminal-green); transition: width 2s;"></div>
+            <div id="loader-bar"
+                style="width: 0%; height: 100%; background: var(--terminal-green); transition: width 2s;"></div>
         </div>
     </div>
 
     <div class="marquee-container">
         <div class="marquee-wrapper">
+
             <div class="marquee-content">
                 <span>I USE ARCH BTW</span> <span>//</span>
                 <span>CSS IS FOR THE WEAK</span> <span>//</span>
@@ -538,7 +90,24 @@
                 <span>RM -RF / IS A LIFESTYLE</span> <span>//</span>
                 <span>BACKEND MANIA</span> <span>//</span>
                 <span>DATABASE WHISPERER</span> <span>//</span>
+
+                <span>BUG IS A FEATURE</span> <span>//</span>
+                <span>CODE HARD, CRASH HARDER</span> <span>//</span>
+                <span>SLEEP IS FOR JUNIORS</span> <span>//</span>
+                <span>WELCOME TO THE DARK MODE</span> <span>//</span>
+                <span>SEMICOLON SAVES LIVES</span> <span>//</span>
+                <span>TRUST ME, IT WORKS ON MY MACHINE</span> <span>//</span>
+                <span>GIT COMMIT -M 'FIX'</span> <span>//</span>
+                <span>COFFEE OVERFLOW</span> <span>//</span>
+                <span>Hello World 2.0</span> <span>//</span>
+                <span>SCRUM? I ONLY RUN</span> <span>//</span>
+                <span>ALT + F4 = PRO LEVEL</span> <span>//</span>
+                <span>JSON IS MY LOVE LANGUAGE</span> <span>//</span>
+                <span>NETWORKING WITH PACKETS</span> <span>//</span>
+                <span>BOOTING MY BRAIN...</span> <span>//</span>
+                <span>NO WIFI? NO LIFE</span> <span>//</span>
             </div>
+
             <div class="marquee-content">
                 <span>I USE ARCH BTW</span> <span>//</span>
                 <span>CSS IS FOR THE WEAK</span> <span>//</span>
@@ -552,9 +121,27 @@
                 <span>RM -RF / IS A LIFESTYLE</span> <span>//</span>
                 <span>BACKEND MANIA</span> <span>//</span>
                 <span>DATABASE WHISPERER</span> <span>//</span>
+
+                <span>BUG IS A FEATURE</span> <span>//</span>
+                <span>CODE HARD, CRASH HARDER</span> <span>//</span>
+                <span>SLEEP IS FOR JUNIORS</span> <span>//</span>
+                <span>WELCOME TO THE DARK MODE</span> <span>//</span>
+                <span>SEMICOLON SAVES LIVES</span> <span>//</span>
+                <span>TRUST ME, IT WORKS ON MY MACHINE</span> <span>//</span>
+                <span>GIT COMMIT -M 'FIX'</span> <span>//</span>
+                <span>COFFEE OVERFLOW</span> <span>//</span>
+                <span>Hello World 2.0</span> <span>//</span>
+                <span>SCRUM? I ONLY RUN</span> <span>//</span>
+                <span>ALT + F4 = PRO LEVEL</span> <span>//</span>
+                <span>JSON IS MY LOVE LANGUAGE</span> <span>//</span>
+                <span>NETWORKING WITH PACKETS</span> <span>//</span>
+                <span>BOOTING MY BRAIN...</span> <span>//</span>
+                <span>NO WIFI? NO LIFE</span> <span>//</span>
             </div>
+
         </div>
     </div>
+
 
     <nav class="navbar">
         <div class="nav-inner">
@@ -579,10 +166,10 @@
                         <i class="fas fa-terminal"></i> Process ID: 1 (init)
                     </div>
 
-                    <h1 class="glitch-text" data-text="MUHAMMAD FAIQ RAIHAN">MUHAMMAD FAIQ RAIHAN</h1>
+                    <h1 class="glitch-text" data-text="MUHAMMAD FAIQ RAIHAN">MUHAMMAD FAIQ RAIHAN D.,S.Kom.</h1>
 
                     <h3 style="font-family: var(--font-mono); color: #ccc; margin-bottom: 2rem;">
-                        <span style="color: var(--terminal-red);">></span> Backend Architect & Linux Extremist
+                        <span style="color: var(--terminal-red);">></span> Backend Developer (only) & Linux Enthusiast
                     </h3>
 
                     <div style="margin-bottom: 2rem;">
@@ -592,12 +179,16 @@
                         <span class="sticker-badge">NO GUI</span>
                     </div>
 
-                    <p style="color: #888; max-width: 500px; margin-bottom: 2rem; border-left: 2px solid var(--terminal-green); padding-left: 1rem;">
-                        Mengubah kafein menjadi *thread-safe code*. Terobsesi dengan efisiensi server, keamanan jaringan, dan membenci *mouse*. Jika tidak ada di terminal, itu tidak nyata.
+                    <p
+                        style="color: #888; max-width: 500px; margin-bottom: 2rem; border-left: 2px solid var(--terminal-green); padding-left: 1rem;">
+                        Mengubah kafein menjadi *thread-safe code*. Terobsesi dengan efisiensi server, keamanan
+                        jaringan, jangan lupa <b>clean code</b>. Kafein, terminal, kode yang efisien dan surya 16 ,itulah
+                        ekosistem saya.
                     </p>
 
                     <div style="display: flex; gap: 1rem;">
-                        <a href="#terminal-cta" style="background: var(--terminal-green); color: #000; padding: 12px 24px; text-decoration: none; font-weight: bold; font-family: var(--font-mono);">
+                        <a href="#terminal-cta"
+                            style="background: var(--terminal-green); color: #000; padding: 12px 24px; text-decoration: none; font-weight: bold; font-family: var(--font-mono);">
                             EXECUTE_CONTACT()
                         </a>
                     </div>
@@ -605,7 +196,8 @@
 
                 <div class="hero-img-box" data-aos="zoom-in">
                     <img src="img/hero/aku.png" alt="Faiq Raihan Profile">
-                    <div style="position: absolute; top: 10px; left: 10px; font-family: var(--font-mono); font-size: 0.7rem; color: #0f0; background: rgba(0,0,0,0.8); padding: 2px;">
+                    <div
+                        style="position: absolute; top: 10px; left: 10px; font-family: var(--font-mono); font-size: 0.7rem; color: #0f0; background: rgba(0,0,0,0.8); padding: 2px;">
                         face_recognition: MATCH (99.8%)
                     </div>
                 </div>
@@ -621,22 +213,26 @@
             </div>
             <div class="phil-grid">
                 <div class="phil-card" data-aos="fade-up" data-aos-delay="0">
-                    <i class="fas fa-recycle" style="font-size: 2rem; color: var(--terminal-green); margin-bottom: 1rem;"></i>
+                    <i class="fas fa-recycle"
+                        style="font-size: 2rem; color: var(--terminal-green); margin-bottom: 1rem;"></i>
                     <div class="phil-title">D.R.Y.</div>
                     <p style="color: #888;">"Don't Repeat Yourself". Efisiensi adalah kunci.</p>
                 </div>
                 <div class="phil-card" data-aos="fade-up" data-aos-delay="100">
-                    <i class="fas fa-kiss-wink-heart" style="font-size: 2rem; color: var(--terminal-green); margin-bottom: 1rem;"></i>
+                    <i class="fas fa-kiss-wink-heart"
+                        style="font-size: 2rem; color: var(--terminal-green); margin-bottom: 1rem;"></i>
                     <div class="phil-title">K.I.S.S.</div>
                     <p style="color: #888;">"Keep It Simple, Stupid". Kompleksitas adalah musuh.</p>
                 </div>
                 <div class="phil-card" data-aos="fade-up" data-aos-delay="200">
-                    <i class="fas fa-cubes" style="font-size: 2rem; color: var(--terminal-green); margin-bottom: 1rem;"></i>
+                    <i class="fas fa-cubes"
+                        style="font-size: 2rem; color: var(--terminal-green); margin-bottom: 1rem;"></i>
                     <div class="phil-title">S.O.L.I.D.</div>
                     <p style="color: #888;">Menerapkan 5 prinsip desain OOP untuk software robust.</p>
                 </div>
                 <div class="phil-card" data-aos="fade-up" data-aos-delay="300">
-                    <i class="fas fa-ban" style="font-size: 2rem; color: var(--terminal-green); margin-bottom: 1rem;"></i>
+                    <i class="fas fa-ban"
+                        style="font-size: 2rem; color: var(--terminal-green); margin-bottom: 1rem;"></i>
                     <div class="phil-title">Y.A.G.N.I.</div>
                     <p style="color: #888;">Fokus fitur sekarang, bukan over-engineering.</p>
                 </div>
@@ -650,7 +246,7 @@
                 <span class="section-tag">02. SYSTEM STATUS</span>
                 <h2 class="section-title">THE PLAYGROUND</h2>
             </div>
-            
+
             <div class="playground-grid">
                 <div class="terminal-box" data-aos="fade-right">
                     <div style="color: #666; margin-bottom: 1rem;">root@faiq-arch:~# neofetch --ascii_distro arch</div>
@@ -681,7 +277,7 @@
                 <div class="terminal-box" data-aos="fade-left">
                     <div style="color: #666; margin-bottom: 10px;">> git log --graph --oneline</div>
                     <div style="display: grid; grid-template-columns: repeat(15, 1fr); gap: 4px;" id="contrib-grid">
-                        </div>
+                    </div>
                     <div style="margin-top: 10px; font-size: 0.8rem; color: #888;">
                         Total Commits: <span style="color: #fff;">9,999+</span> (No life detected)
                     </div>
@@ -699,7 +295,9 @@
             <div class="tech-grid">
                 <div class="tech-card" data-aos="fade-up">
                     <i class="fab fa-linux" style="font-size: 2.5rem; color: #fff; margin-bottom: 1rem;"></i>
-                    <div style="font-weight: bold; margin-bottom: 0.5rem; border-bottom: 1px solid #333; padding-bottom: 5px;">OS & INFRASTRUCTURE</div>
+                    <div
+                        style="font-weight: bold; margin-bottom: 0.5rem; border-bottom: 1px solid #333; padding-bottom: 5px;">
+                        OS & INFRASTRUCTURE</div>
                     <div class="tag-cloud">
                         <span class="tag">ARCH LINUX</span>
                         <span class="tag">DEBIAN</span>
@@ -709,7 +307,9 @@
                 </div>
                 <div class="tech-card" data-aos="fade-up" data-aos-delay="100">
                     <i class="fas fa-server" style="font-size: 2.5rem; color: #fff; margin-bottom: 1rem;"></i>
-                    <div style="font-weight: bold; margin-bottom: 0.5rem; border-bottom: 1px solid #333; padding-bottom: 5px;">BACKEND & API</div>
+                    <div
+                        style="font-weight: bold; margin-bottom: 0.5rem; border-bottom: 1px solid #333; padding-bottom: 5px;">
+                        BACKEND & API</div>
                     <div class="tag-cloud">
                         <span class="tag">LARAVEL</span>
                         <span class="tag">GOLANG</span>
@@ -719,7 +319,9 @@
                 </div>
                 <div class="tech-card" data-aos="fade-up" data-aos-delay="200">
                     <i class="fab fa-docker" style="font-size: 2.5rem; color: #fff; margin-bottom: 1rem;"></i>
-                    <div style="font-weight: bold; margin-bottom: 0.5rem; border-bottom: 1px solid #333; padding-bottom: 5px;">DEVOPS</div>
+                    <div
+                        style="font-weight: bold; margin-bottom: 0.5rem; border-bottom: 1px solid #333; padding-bottom: 5px;">
+                        DEVOPS</div>
                     <div class="tag-cloud">
                         <span class="tag">DOCKER</span>
                         <span class="tag">KUBERNETES</span>
@@ -728,7 +330,9 @@
                 </div>
                 <div class="tech-card" data-aos="fade-up" data-aos-delay="300">
                     <i class="fas fa-brain" style="font-size: 2.5rem; color: #fff; margin-bottom: 1rem;"></i>
-                    <div style="font-weight: bold; margin-bottom: 0.5rem; border-bottom: 1px solid #333; padding-bottom: 5px;">SPECIAL</div>
+                    <div
+                        style="font-weight: bold; margin-bottom: 0.5rem; border-bottom: 1px solid #333; padding-bottom: 5px;">
+                        SPECIAL</div>
                     <div class="tag-cloud">
                         <span class="tag">ML/AI</span>
                         <span class="tag">CYBER SEC</span>
@@ -755,7 +359,8 @@
                     <h3>MAJT Tahap 2 (AI Integrated)</h3>
                     <div class="project-meta">>> LARAVEL | OLLAMA AI | API | FEB 2025</div>
                     <p style="color: #aaa; margin-bottom: 1rem;">
-                        Revamp total UI/UX dan integrasi Kecerdasan Buatan (AI) "AIssya" untuk asisten jamaah interaktif. Termasuk modul Booking Hotel terintegrasi API.
+                        Revamp total UI/UX dan integrasi Kecerdasan Buatan (AI) "AIssya" untuk asisten jamaah
+                        interaktif. Termasuk modul Booking Hotel terintegrasi API.
                     </p>
                     <div style="display: flex; gap: 10px;">
                         <span class="sticker-badge">[PM]</span>
@@ -773,7 +378,8 @@
                     <h3>Pemira Polines (E-Voting)</h3>
                     <div class="project-meta">>> LARAVEL | REALTIME STATS | NOV 2024</div>
                     <p style="color: #aaa; margin-bottom: 1rem;">
-                        Sistem pemilihan raya mahasiswa dengan keamanan tingkat tinggi. Validasi ketat untuk mencegah double-voting dan dashboard admin real-time.
+                        Sistem pemilihan raya mahasiswa dengan keamanan tingkat tinggi. Validasi ketat untuk mencegah
+                        double-voting dan dashboard admin real-time.
                     </p>
                     <div style="display: flex; gap: 10px;">
                         <span class="sticker-badge">[Backend Lead]</span>
@@ -791,7 +397,8 @@
                     <h3>Crystal Clean Inventory System</h3>
                     <div class="project-meta">>> WEB APP | INVOICING | DEC 2024</div>
                     <p style="color: #aaa; margin-bottom: 1rem;">
-                        Sistem manajemen keluar masuk barang (Dirty/Clean) dan pencatatan invoice otomatis untuk divisi Delta Mas.
+                        Sistem manajemen keluar masuk barang (Dirty/Clean) dan pencatatan invoice otomatis untuk divisi
+                        Delta Mas.
                     </p>
                 </div>
             </div>
@@ -805,7 +412,8 @@
                     <h3>Point of Sales (POS) Bintang Jus</h3>
                     <div class="project-meta">>> POS | STOCK MANAGEMENT | OCT 2024</div>
                     <p style="color: #aaa; margin-bottom: 1rem;">
-                        Modernisasi sistem F&B. Kasir digital, manajemen stok buah, dan laporan keuangan harian untuk meningkatkan efisiensi penjualan.
+                        Modernisasi sistem F&B. Kasir digital, manajemen stok buah, dan laporan keuangan harian untuk
+                        meningkatkan efisiensi penjualan.
                     </p>
                 </div>
             </div>
@@ -819,7 +427,8 @@
                     <h3>Crystal Clean Payroll V2</h3>
                     <div class="project-meta">>> LARAVEL | WA GATEWAY API | MAR 2024</div>
                     <p style="color: #aaa; margin-bottom: 1rem;">
-                        Automasi penggajian karyawan dengan fitur notifikasi rincian gaji langsung ke WhatsApp pribadi pegawai secara real-time.
+                        Automasi penggajian karyawan dengan fitur notifikasi rincian gaji langsung ke WhatsApp pribadi
+                        pegawai secara real-time.
                     </p>
                 </div>
             </div>
@@ -833,7 +442,8 @@
                     <h3>MAJT Information System (V1)</h3>
                     <div class="project-meta">>> LARAVEL | PUBLIC INFO | AUG 2023</div>
                     <p style="color: #aaa; margin-bottom: 1rem;">
-                        Peremajaan sistem informasi digital untuk ikon wisata religi Jawa Tengah. Fondasi awal digitalisasi manajemen masjid.
+                        Peremajaan sistem informasi digital untuk ikon wisata religi Jawa Tengah. Fondasi awal
+                        digitalisasi manajemen masjid.
                     </p>
                 </div>
             </div>
@@ -846,7 +456,8 @@
                 <div class="project-content">
                     <h3>Legacy & Early Deployments</h3>
                     <div class="project-meta">>> VARIOUS STACKS | 2021 - 2023</div>
-                    <ul style="color: #aaa; margin-left: 20px; font-size: 0.9rem; list-style-type: square; line-height: 1.8;">
+                    <ul
+                        style="color: #aaa; margin-left: 20px; font-size: 0.9rem; list-style-type: square; line-height: 1.8;">
                         <li><strong>Payroll V1 (2023):</strong> Sistem penggajian dasar Crystal Clean.</li>
                         <li><strong>Bulletin Sunan Kalijaga (2023):</strong> Portal berita digital RISMAJT.</li>
                         <li><strong>Maggot Udinus (2022):</strong> E-commerce produk organik fakultas teknik.</li>
@@ -900,7 +511,7 @@
                 <span class="section-tag">06. ROOT SHELL</span>
                 <h2 class="section-title">INTERACTIVE TERMINAL</h2>
             </div>
-            
+
             <div class="terminal-cta-container">
                 <div style="background: #222; padding: 5px 10px; display: flex; gap: 5px;">
                     <div style="width: 10px; height: 10px; background: #f00; border-radius: 50%;"></div>
@@ -915,7 +526,7 @@
                 </div>
                 <div class="terminal-input-area">
                     <div style="display: flex;">
-                        <span style="color: var(--terminal-green); margin-right: 10px;">➜  ~</span>
+                        <span style="color: var(--terminal-green); margin-right: 10px;">➜ ~</span>
                         <input type="text" id="cmd-input" autocomplete="off" autofocus>
                     </div>
                 </div>
@@ -933,161 +544,7 @@
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({ duration: 800, once: true });
-
-        // --- AUDIO GATEKEEPING LOGIC ---
-        function attemptEntry() {
-            const audio = document.getElementById('bg-music');
-            const gate = document.getElementById('gate-overlay');
-            const preloader = document.getElementById('preloader');
-            const loaderBar = document.getElementById('loader-bar');
-
-            // Set volume to ensure it's heard
-            audio.volume = 0.5;
-
-            // Attempt to play
-            audio.play().then(() => {
-                // SUCCESS: Audio started
-                gate.style.opacity = '0';
-                gate.style.pointerEvents = 'none';
-
-                // Start Fake Loader
-                preloader.classList.add('active');
-                
-                // Animate loader
-                setTimeout(() => { loaderBar.style.width = '100%'; }, 100);
-
-                setTimeout(() => {
-                    preloader.style.opacity = '0';
-                    preloader.style.pointerEvents = 'none';
-                    document.body.classList.add('access-granted');
-                    
-                    // SCROLL FIX: Arahkan ke paling atas (Hero Section)
-                    window.scrollTo(0, 0); 
-
-                }, 2500);
-
-            }).catch(error => {
-                // FAILED: Browser blocked autoplay or file missing
-                console.error("Audio playback failed:", error);
-                const btn = document.querySelector('.enter-btn');
-                btn.innerHTML = "[ ERROR: CLICK AGAIN ]";
-                btn.style.background = "#fff";
-                alert("SYSTEM ERROR: Audio initialization failed. Interaction required by browser policy. Please click again.");
-            });
-        }
-
-        // --- MATRIX RAIN EFFECT ---
-        const canvas = document.getElementById('matrix');
-        const ctx = canvas.getContext('2d');
-
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        const alphabet = katakana.split('');
-
-        const fontSize = 16;
-        const columns = canvas.width / fontSize;
-        const drops = [];
-
-        for(let x = 0; x < columns; x++) {
-            drops[x] = 1;
-        }
-
-        function drawMatrix() {
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            ctx.fillStyle = '#0F0'; // Green text
-            ctx.font = fontSize + 'px monospace';
-
-            for(let i = 0; i < drops.length; i++) {
-                const text = alphabet[Math.floor(Math.random() * alphabet.length)];
-                ctx.fillText(text, i*fontSize, drops[i]*fontSize);
-
-                if(drops[i]*fontSize > canvas.height && Math.random() > 0.975)
-                    drops[i] = 0;
-
-                drops[i]++;
-            }
-        }
-        setInterval(drawMatrix, 30);
-
-        // --- GITHUB GRID GENERATOR ---
-        const contribGrid = document.getElementById('contrib-grid');
-        for(let i=0; i<105; i++) {
-            const div = document.createElement('div');
-            div.className = 'contrib-box';
-            const rnd = Math.random();
-            if(rnd > 0.8) div.classList.add('lvl-4');
-            else if(rnd > 0.6) div.classList.add('lvl-3');
-            else if(rnd > 0.4) div.classList.add('lvl-2');
-            else div.classList.add('lvl-1');
-            contribGrid.appendChild(div);
-        }
-
-        // --- TERMINAL LOGIC ---
-        const cmdInput = document.getElementById('cmd-input');
-        const termOutput = document.getElementById('terminal-output');
-
-        cmdInput.addEventListener('keydown', function(e) {
-            if(e.key === 'Enter') {
-                const cmd = this.value.trim().toLowerCase();
-                const newLine = document.createElement('div');
-                newLine.innerHTML = `<span style="color: var(--terminal-green)">➜ ~</span> ${this.value}`;
-                termOutput.appendChild(newLine);
-                
-                processCommand(cmd);
-                
-                this.value = '';
-                termOutput.scrollTop = termOutput.scrollHeight;
-            }
-        });
-
-        function processCommand(cmd) {
-            const res = document.createElement('div');
-            res.style.marginBottom = '10px';
-            res.style.color = '#ccc';
-
-            switch(cmd) {
-                case 'help':
-                    res.innerHTML = `Available commands:<br>
-                    - <b style="color:#fff">whoami</b> : Identity<br>
-                    - <b style="color:#fff">skills</b> : Tech stack<br>
-                    - <b style="color:#fff">contact</b> : Email me<br>
-                    - <b style="color:#fff">clear</b> : Clean buffer<br>
-                    - <b style="color:#fff">sudo</b> : Root access?`;
-                    break;
-                case 'whoami':
-                    res.innerHTML = "Muhammad Faiq Raihan. Backend Engineer. Linux Enthusiast.";
-                    break;
-                case 'contact':
-                    res.innerHTML = "Opening mail client...";
-                    setTimeout(() => window.location.href="mailto:faiq.fhr03@gmail.com", 1000);
-                    break;
-                case 'sudo':
-                    res.innerHTML = "<span style='color:red; font-weight:bold;'>PERMISSION DENIED:</span> You are not in the sudoers file. This incident will be reported.";
-                    break;
-                case 'sudo rm -rf /':
-                    document.body.style.display = 'none';
-                    alert("KERNEL PANIC: SYSTEM DESTROYED BY USER.");
-                    setTimeout(() => location.reload(), 2000);
-                    break;
-                case 'clear':
-                    termOutput.innerHTML = '';
-                    return;
-                default:
-                    res.innerHTML = `zsh: command not found: ${cmd}`;
-            }
-            termOutput.appendChild(res);
-        }
-
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
+
 </html>
